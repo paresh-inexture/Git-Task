@@ -2,11 +2,26 @@ name: Clone and Count Lines of Code
 
 on:
   schedule:
-    - cron: '30 10 * * *'
+    - cron: '40 10 * * *'
 
 jobs:
-  my-job:
+  clone-and-count-loc:
     runs-on: ubuntu-latest
+
     steps:
-      - name: My Step
-        run: echo "Hello, world!"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run script
+        run: python main.py
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+
