@@ -53,10 +53,9 @@ if __name__ == '__main__':
     GITHUB_ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 
     # Replace with the directory where you want to store the cloned repositories
-    CLONE_DIRECTORY = '/home/root362/Documents/Test_Git_Clone'
+    CLONE_DIRECTORY = 'repos/'
 
     g = Github(login_or_token=GITHUB_ACCESS_TOKEN)
-    print(GITHUB_ACCESS_TOKEN)
 
     # Get the user object
     USER = g.get_user()
