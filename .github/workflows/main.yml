@@ -2,7 +2,7 @@ name: Clone and Count Lines of Code
 
 on:
   schedule:
-    - cron: '40 11 * * *'
+    - cron: '34 12 * * *'
 
 jobs:
   clone-and-count-loc:
