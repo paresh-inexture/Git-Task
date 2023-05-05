@@ -56,6 +56,7 @@ if __name__ == '__main__':
     CLONE_DIRECTORY = '/home/root362/Documents/Test_Git_Clone'
 
     g = Github(login_or_token=GITHUB_ACCESS_TOKEN)
+    print(GITHUB_ACCESS_TOKEN)
 
     # Get the user object
     USER = g.get_user()
