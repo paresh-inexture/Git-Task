@@ -1,10 +1,11 @@
 import csv
 import subprocess
-
+from dotenv import load_dotenv
 from github import Github
 import os
 from git import Repo
 
+load_dotenv()
 
 class GitClone:
     def __init__(self, user, clone_directory, cloc_output_file, repositories):
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     USERNAME = 'paresh-inexture'
 
     # Replace with your GitHub access token
-    GITHUB_ACCESS_TOKEN = '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'
+    GITHUB_ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 
     # Replace with the directory where you want to store the cloned repositories
     CLONE_DIRECTORY = '/home/root362/Documents/Test_Git_Clone'
@@ -64,4 +65,7 @@ if __name__ == '__main__':
                     "test_CI-CD": "https://github.com/anujsahatpure/test_CI-CD.git"
                     }
     git_object = GitClone(USER, CLONE_DIRECTORY, CLOC_OUTPUT_FILE, REPOSITORIES)
-    git_object.clone_project()
+    try:
+        git_object.clone_project()
+    except Exception as e:
+        print("An Exception Occured:",e)
